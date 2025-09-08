@@ -1,4 +1,4 @@
-This is a Node.js back end for a flags quiz game
+This is a Node.js back end for a flags quiz game utilizing socket.io
 
 Uses the [Flags API](https://flagsapi.com/) for the flags
 
