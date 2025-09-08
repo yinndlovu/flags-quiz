@@ -95,7 +95,6 @@ module.exports = [
   { code: "GW", name: "Guinea-Bissau" },
   { code: "GY", name: "Guyana" },
   { code: "HT", name: "Haiti" },
-  { code: "HM", name: "Heard Island and McDonald Islands" },
   { code: "VA", name: "Holy See (the)" },
   { code: "HN", name: "Honduras" },
   { code: "HK", name: "Hong Kong" },
