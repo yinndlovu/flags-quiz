@@ -8,6 +8,7 @@ function generateQuestions(num) {
   const selectedIndices = [];
   while (selectedIndices.length < num) {
     const idx = Math.floor(Math.random() * countries.length);
+
     if (!selectedIndices.includes(idx)) {
       selectedIndices.push(idx);
     }
@@ -17,6 +18,7 @@ function generateQuestions(num) {
 
 function startNextQuestion(gameId) {
   const game = games.get(gameId);
+
   if (!game || game.currentQuestion >= 10) {
     endGame(gameId);
     return;
@@ -86,6 +88,7 @@ function endGame(gameId) {
     player1: { id: game.players[0].id, score: game.scores[0] },
     player2: { id: game.players[1].id, score: game.scores[1] },
   };
+
   game.players[0].io.to(gameId).emit("gameEnd", results);
   games.delete(gameId);
 }
@@ -101,6 +104,7 @@ module.exports = (server) => {
   io.on("connection", (socket) => {
     socket.on("joinGame", () => {
       queue.push(socket);
+      
       if (queue.length >= 2) {
         const player1 = queue.shift();
         const player2 = queue.shift();
@@ -129,6 +133,7 @@ module.exports = (server) => {
 
     socket.on("disconnect", () => {
       queue = queue.filter((s) => s !== socket);
+
       for (const [gameId, game] of games.entries()) {
         if (game.players.includes(socket)) {
           io.to(gameId).emit("opponentDisconnected");
